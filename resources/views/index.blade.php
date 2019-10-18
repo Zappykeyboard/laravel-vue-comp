@@ -5,6 +5,7 @@
   <div id="app">
     @foreach ($posts as $post)
       <post-box
+        
         :title='"{{$post->title}}"'
         :author='"{{$post->author}}"'
         ></post-box>

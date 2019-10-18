@@ -41,6 +41,7 @@
       }
     },
     props: {
+      id: String,
       title: String,
       author: String,
       content: String,
@@ -57,10 +58,29 @@
         this.showEditForm = !this.showEditForm;
       },
       save(){
+
+        //i campi da inviare
+        let post = {
+          _token: token,
+          title: this.postTitle,
+          author: this.postAuthor,
+          content: this.postContent
+        };
+        console.log('post/' + this.id);
+        //invio i dati
+        axios.put('http://localhost:8888/post/' + this.id, post)
+            .then(function(res){console.log(res);})
+            .catch(function(err){console.log(err);});
+
+        //aggiorno i campi
+        this.updateValues();
+        //chiudo il form
+        this.edit();
+      },
+      updateValues(){
         this.title = this.postTitle;
         this.author = this.postAuthor;
         this.content = this.postContent;
-        this.showEditForm = !this.showEditForm;
       }
     }
   })

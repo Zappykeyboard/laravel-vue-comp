@@ -72,7 +72,9 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $post = Post::findOrFail($id);
+      $post -> update($request -> all());
+      return response() -> json($request -> all(), 200);
     }
 
     /**

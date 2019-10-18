@@ -49166,6 +49166,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 
 function init() {
+  token = $('meta[name="csrf-token"]').attr('content');
+  window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token;
   new Vue({
     el: '#app'
   });

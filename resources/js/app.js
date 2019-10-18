@@ -9,7 +9,9 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 function init(){
-
+  token = $('meta[name="csrf-token"]').attr('content');
+  window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token;
+  
   new Vue({
     el:'#app',
   });
