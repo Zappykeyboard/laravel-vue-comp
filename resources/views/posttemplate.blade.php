@@ -17,15 +17,16 @@
         <input type="text" name="author" v-model="postTitle">
       </div>
       <div class="">
-        <textarea cols='23' rows = '4' type="text" v-model="postContent"></textarea>
+        <textarea cols='23' rows ='4' type="text" v-model="postContent"></textarea>
       </div>
     </div>
-    <button @click="edit()" type="button" name="button">Edit post...</button>
+    <button v-show="!showEditForm" @click="edit()" type="button" >Edit post...</button>
+    <button v-show="showEditForm" @click="edit()" type="button" >Close edit form</button>
+    <button v-show="showEditForm" @click="save()" type="button" >Save</button>
     <hr>
   </div>
-
-
 </script>
+
 
 <script type="text/javascript">
   Vue.component('post-box',{
@@ -53,6 +54,12 @@
     },
     methods: {
       edit(){
+        this.showEditForm = !this.showEditForm;
+      },
+      save(){
+        this.title = this.postTitle;
+        this.author = this.postAuthor;
+        this.content = this.postContent;
         this.showEditForm = !this.showEditForm;
       }
     }
