@@ -66,9 +66,8 @@
           author: this.postAuthor,
           content: this.postContent
         };
-        console.log('post/' + this.id);
         //invio i dati
-        axios.put('http://localhost:8888/post/' + this.id, post)
+        axios.put('/post/' + this.id, post)
             .then(function(res){console.log(res);})
             .catch(function(err){console.log(err);});
 
