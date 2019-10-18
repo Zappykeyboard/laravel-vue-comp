@@ -18,6 +18,7 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->string('author');
             $table->string('content');
+            $table->integer('likes');
             $table->timestamps();
 
 

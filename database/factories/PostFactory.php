@@ -11,6 +11,6 @@ $factory->define(Post::class, function (Faker $faker) {
         'title'=> $faker ->sentence,
         'author'=> $faker ->userName,
         'content'=> $faker ->paragraph,
-
+        'likes'=>rand(0, 500)
     ];
 });
