@@ -1,9 +1,9 @@
 <script type="text/x-template" id='post-box'>
   <div class="the-post">
     <div v-show="!showEditForm" class="post-content">
-      <h2>@{{title}}</h2>
-      <p>@{{author}}</p>
-      <p v-show="content" >@{{content}}</p>
+      <h2>@{{postTitle}}</h2>
+      <p>@{{postAuthor}}</p>
+      <p v-show="content" >@{{postContent}}</p>
       <p v-show="likes" v-bind:class="heartIcon">@{{likes}}</p>
     </div>
 
@@ -34,7 +34,7 @@
     data: function(){
       return {
         editField: '',
-        postContent:this.content,
+        postContent: this.content,
         postTitle: this.title,
         postAuthor: this.author,
         showEditForm: false
@@ -58,7 +58,6 @@
         this.showEditForm = !this.showEditForm;
       },
       save(){
-
         //i campi da inviare
         let post = {
           _token: token,
@@ -71,16 +70,10 @@
             .then(function(res){console.log(res);})
             .catch(function(err){console.log(err);});
 
-        //aggiorno i campi
-        this.updateValues();
         //chiudo il form
         this.edit();
       },
-      updateValues(){
-        this.title = this.postTitle;
-        this.author = this.postAuthor;
-        this.content = this.postContent;
-      }
+
     }
   })
 </script>
